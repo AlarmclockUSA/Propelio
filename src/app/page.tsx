@@ -2,12 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Image from "next/image";
-import dynamic from 'next/dynamic';
 import Footer from '@/components/Footer';
-
-const Plyr = dynamic(() => import('plyr-react'), {
-  ssr: false,
-});
 
 interface Particle {
   x: number;
@@ -134,28 +129,6 @@ export default function Home() {
     };
   }, []);
 
-  const videoOptions = {
-    controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
-    settings: [],
-    clickToPlay: true,
-    hideControls: true,
-    resetOnEnd: true,
-    quality: {
-      default: 1080,
-      options: [4320, 2880, 2160, 1440, 1080, 720, 576, 480, 360, 240]
-    }
-  };
-
-  const videoSource = {
-    type: 'video' as const,
-    sources: [
-      {
-        src: 'i88II9fQveE',
-        provider: 'youtube'
-      }
-    ]
-  };
-
   return (
     <div className="relative bg-[#482B66]">
       {/* Background Animation */}
@@ -201,7 +174,7 @@ export default function Home() {
                   onClick={() => setIsPlaying(true)}
                 >
                   {/* Thumbnail */}
-          <Image
+                  <Image
                     src="https://img.youtube.com/vi/i88II9fQveE/maxresdefault.jpg"
                     alt="Video Thumbnail"
                     fill
@@ -227,9 +200,14 @@ export default function Home() {
                   />
                 </div>
               ) : (
-                <Plyr
-                  options={videoOptions}
-                  source={videoSource}
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/i88II9fQveE?autoplay=1"
+                  title="Propelio Video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="absolute inset-0"
                 />
               )}
             </div>
