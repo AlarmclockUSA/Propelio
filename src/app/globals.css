@@ -2,6 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Plyr custom styles */
+.plyr {
+  --plyr-color-main: #EA4C4A;
+  --plyr-video-background: transparent;
+  --plyr-video-control-color: #ffffff;
+  --plyr-video-control-color-hover: #EA4C4A;
+  --plyr-audio-control-color-hover: #EA4C4A;
+  --plyr-audio-control-color: #ffffff;
+  --plyr-range-fill-background: #EA4C4A;
+}
+
+.plyr--video .plyr__control:hover {
+  background: #EA4C4A;
+}
+
+.plyr--full-ui input[type=range] {
+  color: #EA4C4A;
+}
+
+.plyr__control--overlaid {
+  background: rgba(234, 76, 74, 0.8);
+}
+
+.plyr__control--overlaid:hover {
+  background: #EA4C4A;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
