@@ -5,34 +5,6 @@ import { useState, useEffect, useRef } from 'react';
 import Image from "next/image";
 import Footer from '@/components/Footer';
 
-// Helper function to position logos in a circle
-const getInitialPosition = (index: number) => {
-  const totalItems = 15;
-  const radius = 250; // Adjust this value to change the circle size
-  const angle = (index * 2 * Math.PI) / totalItems;
-  const x = Math.cos(angle) * radius;
-  const y = Math.sin(angle) * radius;
-  
-  return `translate-x-[${x}px] translate-y-[${y}px]`;
-};
-
-// Helper function to get random position
-const getRandomPosition = (index: number) => {
-  const angle = Math.random() * 2 * Math.PI;
-  const distance = 200 + Math.random() * 300; // Random distance between 200 and 500px
-  const x = Math.cos(angle) * distance;
-  const y = Math.sin(angle) * distance;
-  return { x, y };
-};
-
-// Helper function to get circle position
-const getCirclePosition = (index: number, totalItems: number, radius: number) => {
-  const angle = (index * 2 * Math.PI) / totalItems;
-  const x = Math.cos(angle) * radius;
-  const y = Math.sin(angle) * radius;
-  return { x, y };
-};
-
 interface Particle {
   x: number;
   y: number;
@@ -43,7 +15,7 @@ interface Particle {
 
 export default function Home() {
   const [email, setEmail] = useState('');
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [, setIsScrolled] = useState(false); // Keep the setter but ignore the unused variable
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const animationFrameRef = useRef<number>(0);
@@ -1390,7 +1362,7 @@ export default function Home() {
       </div>
 
       {/* Property Data Section */}
-      // ... existing code ...
+      {/* ... existing code ... */}
 
       {/* Marketing Section */}
       <div className="relative bg-white py-32">
